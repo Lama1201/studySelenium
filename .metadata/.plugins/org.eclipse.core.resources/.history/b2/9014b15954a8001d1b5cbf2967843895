@@ -1,0 +1,10 @@
+/**
+ * 
+ */
+/**
+ * @author Lama
+ *
+ */
+module sturdySelenium {
+	requires org.seleniumhq.selenium.chrome_driver;
+}

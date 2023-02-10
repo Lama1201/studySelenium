@@ -1,0 +1,58 @@
+package reviewJava;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+public class reviewJava2 {
+	public static void main(String[] args) {
+		// Sử dụng class Arraylist để tạo mảng động
+		ArrayList<String> name = new ArrayList<String>();
+		name.add("Bao");
+		name.add("Toan");
+		name.add("Anh");
+		name.add("Tuan");
+		name.add("Khiem");
+		name.add("Phuong");
+		/*for(String n: name ) {
+			System.out.println(n);
+		}*/
+		
+		// Lấy giá trị tại 1 vị trí
+		System.out.println(name.get(1));
+		System.out.println();
+		
+		// Xóa mảng tại 1 vị trí
+		name.remove(1);
+		for(String na: name ) {
+			System.out.println(na);
+		}
+		System.out.println();
+		
+		// Xóa mảng theo giá trị
+		name.remove(String.valueOf("Tuan"));
+		for(String na: name ) {
+			System.out.println(na);
+			
+		}
+		System.out.println();
+		
+		// Gán các số ngẫu nhiên
+		ArrayList<Integer> number = new ArrayList<Integer>();
+		number.add((int)(Math.random()*100));
+		number.add((int)(Math.random()*100));
+		number.add((int)(Math.random()*100));
+		number.add((int)(Math.random()*100));
+		number.add((int)(Math.random()*100));
+		for(Integer nu: number ) {
+			System.out.println(nu);
+		}
+		
+		// Xóa phần tử có giá trị nhỏ hơn 50
+		for(Integer nu: number ) {
+			If(nu < 50){
+				number.remove(Integer.valueOf(nu));
+			}
+			System.out.println(nu);
+		}
+	}
+}

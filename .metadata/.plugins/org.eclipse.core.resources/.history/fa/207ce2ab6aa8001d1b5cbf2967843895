@@ -1,0 +1,33 @@
+package reviewJava;
+
+public class reviewJava {
+
+	public static void main(String[] args) {
+		// Array 
+		// Khai báo và gán giá trị theo từng bước
+		int[] year = new int[5]; 
+		year[0] = 1984;
+		year[1]= 1997;
+		year[2] = 2003;
+		year[3] = 2006;
+		year[4]= 2009;
+		
+		// Khai báo và gán giá trị đồng thời
+		int[] year2 = {1983,2018,2020,2021};
+		String[] name = {"An","Tuan","Hai","Phuong"};
+		
+		// In giá trị tại 1 vị trí trong mảng
+		//System.out.println(year[2]);
+		//System.out.println(year2[0]);
+		
+		// In mảng
+		for(int i = 0; i < year.length; i++ ) {
+			System.out.println(year[i]);
+		}
+		for(int i = 0; i < name.length; i++ ) {
+			System.out.println(name[i]);
+		}
+
+	}
+
+}

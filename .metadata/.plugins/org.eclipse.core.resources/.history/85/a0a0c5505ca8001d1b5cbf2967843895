@@ -1,0 +1,17 @@
+package studySelenium;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class SelIntroduction {
+
+	public static void main(String[] args) {
+		// call browser
+		System.setProperty("webDriver.chrome.driver", "E:\\SturdyCode\\Selenium\\chromedriver.exe");
+		//WebDriver chr = new ChromeDriver();
+		//ChromeDriver chr = new ChromeDriver();
+		
+
+	}
+
+}

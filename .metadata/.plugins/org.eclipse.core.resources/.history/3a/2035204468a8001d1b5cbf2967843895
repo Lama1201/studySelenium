@@ -1,0 +1,23 @@
+package reviewJava;
+
+public class reviewJava {
+
+	public static void main(String[] args) {
+		// Array 
+		// Khai báo và gán giá trị theo từng bước
+		int[] year = new int[5]; 
+		year[0] = 1984;
+		year[1]= 1997;
+		year[2] = 2003;
+		year[3] = 2006;
+		year[4]= 2009;
+		
+		// Khai báo và gán giá trị đồng thời
+		int[] year2 = {1983,2018,2020,2021};
+		
+		//in giá trị mảng
+		System.out.println(year[2]);
+
+	}
+
+}
