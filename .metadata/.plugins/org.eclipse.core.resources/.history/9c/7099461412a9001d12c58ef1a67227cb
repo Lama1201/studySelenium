@@ -1,0 +1,18 @@
+package reviewJava;
+
+public class reviewMethod {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		reviewMethod d = new reviewMethod();
+		d.getData();
+
+	}
+	
+	// Tạo method trong object
+	public String getData() {
+		System.out.println("Say something to demo");
+		return "Lama in dahouse";
+	}
+
+}

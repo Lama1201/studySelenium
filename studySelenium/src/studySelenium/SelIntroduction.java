@@ -1,5 +1,6 @@
 package studySelenium;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 //import org.openqa.selenium.edge.EdgeDriver;
@@ -25,8 +26,14 @@ public class SelIntroduction {
 		System.out.println(chr1.getTitle());
 		System.out.println(chr1.getCurrentUrl());
 		
+		//
+		chr1.findElement(By.id("email")).sendKeys("admin@arches-global.com");
+		chr1.findElement(By.id("password")).sendKeys("Password1@");
+		chr1.findElement(By.className("arches-btn btn btn-secondary")).click();
+		
+		
 		// Đóng tab được mở bởi đoạn code trước đó
-		chr1.close();
+		//chr1.close();
 		// Đóng tất cả các tab
 		// chr1.quit();
 

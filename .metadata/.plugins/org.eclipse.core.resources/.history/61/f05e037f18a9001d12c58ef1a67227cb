@@ -1,0 +1,16 @@
+package reviewJava;
+
+public class methodDemo {
+	
+	// Tạo method return string
+	public String getData() {
+		return "Lama in dahouse";
+		}
+	
+	// Tạo method ko return data
+	public void print() {
+		System.out.println("Say something to demo");
+	}
+	
+
+}

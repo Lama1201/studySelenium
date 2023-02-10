@@ -1,0 +1,31 @@
+package reviewJava;
+
+public class reviewMethod {
+
+	public static void main(String[] args) {
+		// Tạo đối tượng trong cùng class
+		/*reviewMethod d = new reviewMethod();
+		String returnedValue = d.getData();
+		System.out.println(returnedValue);*/
+		
+		// Tạo đối tượng từ class khác
+		methodDemo d1= new methodDemo();
+		System.out.println(d1.getData());
+		d1.printdemo();
+		printdemo2();
+
+	}
+	
+	// Tạo method trong object
+	/*private String getData() {
+		//System.out.println("Say something to demo");
+		return "Lama in dahouse";
+	}*/
+	
+	
+	// từ khóa static cho phép gọi ko cần thông qua class
+	public static void printdemo2() {
+		System.out.println("This is demo of print");
+	}
+
+}
