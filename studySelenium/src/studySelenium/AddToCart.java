@@ -3,12 +3,15 @@ package studySelenium;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AddToCart {
 
@@ -18,22 +21,24 @@ public class AddToCart {
 		chr.manage().window().maximize();
 		String[] vegetable = { "Brocolli", "Cauliflower", "Cucumber", "Beetroot", "Carrot", "Tomato", "Beans",
 				"Brinjal", "Capsicum", "Apple", "Grapes", "Mango", "Strawberry", "Walnuts", "Pista" };
-		String[] vegetable2 = {"Apple","Mango","Walnuts",};
+		String code = "rahulshettyacademy";
 
 		AddProduct2(chr, vegetable[(int) (Math.random() * vegetable.length)]); 
 		AddProduct1(chr, vegetable[(int) (Math.random() * vegetable.length)]);  
 		AddProduct3(chr, vegetable[(int) (Math.random() * vegetable.length)]);
 		AddProduct3(chr, vegetable[(int) (Math.random() * vegetable.length)]); 
-		//AddProduct4(chr,vegetable2); 
-
-		chr.findElement(By.className("cart-icon")).click();
-		Thread.sleep(6000);
-		chr.quit();
+		//AddProduct4(chr,vegetable); 
+		CheckOut(chr,code);
+		ChooseCountry(chr,"Vietnam");
+		
+		Thread.sleep(2000);
+		
+		//chr.quit();
 
 	}
 	// Sử dụng vòng for thông thường để quét list product
 	public static void AddProduct1(WebDriver chr, String product) throws InterruptedException {
-		chr.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		chr.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 		List<WebElement> products = chr.findElements(By.className("product-name"));
 		System.out.println("Selected product: " + product);
 
@@ -106,4 +111,31 @@ public class AddToCart {
 	        }
 	    });
 	}
+	
+	public static void CheckOut(WebDriver chr,String promoCode) {
+		chr.findElement(By.className("cart-icon")).click();
+		chr.findElement(By.xpath("//button[text()='PROCEED TO CHECKOUT']")).click();
+		chr.findElement(By.className("promoCode")).sendKeys(promoCode);
+		chr.findElement(By.className("promoBtn")).click();
+		// Sử dụng explicit wait
+		WebDriverWait w = new WebDriverWait(chr,Duration.ofSeconds(5));
+		w.until(ExpectedConditions.visibilityOfElementLocated(By.className("promoInfo")));
+		
+		if(chr.findElement(By.className("promoInfo")).getText().contains("applied")) {
+			chr.findElement(By.xpath("//button[text()='Place Order']")).click();
+		}
+		else {
+			System.out.println("Promotion code is incorrect");
+		}
+	}
+	
+	public static void ChooseCountry(WebDriver chr,String country) {
+		Select countries = new Select(chr.findElement(By.xpath("//select")));
+		countries.selectByValue(country);
+		if(!chr.findElement(By.className("chkAgree")).isSelected()) {
+			chr.findElement(By.className("chkAgree")).click();
+		}
+		chr.findElement(By.xpath("//button[text()='Proceed']")).click();
+	}
+	
 }

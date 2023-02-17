@@ -23,7 +23,7 @@ public class DropdownHandling {
 		FlightDate(chr1, 2023, 5, 20);
 		StartSearch(chr1);
 
-		chr1.quit();
+		//chr1.quit();
 	}
 
 	public static void Currency(WebDriver chr) throws InterruptedException {
