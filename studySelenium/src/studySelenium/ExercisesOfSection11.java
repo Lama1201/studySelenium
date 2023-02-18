@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 
 public class ExercisesOfSection11 {
 
@@ -32,30 +33,26 @@ public class ExercisesOfSection11 {
 		//System.out.println(chr.findElement(By.id("gf-BIG")).findElement(By.xpath("(//ul)[1]")).findElements(By.tagName("a")).size());
 		
 		// 4. Click vào từng link trong 3.
-		//OpenAllLinks(firstCol);
+		OpenAllLinks(firstCol);
 		
 		// 5. Lấy title của  tất cả các tabs đang mở
-		//GetTitleAllWindows(chr);
+		GetTitleAllWindows(chr);
 				
 		// 6. Đóng các tabs đã mở
-		//CloseAllChildenWindows(chr);
+		CloseAllChildenWindows(chr);
 				
 		
 		// 7. Cuộn đến vị trí element nào đó
-		//((JavascriptExecutor) chr).executeScript("arguments[0].scrollIntoView(true);", chr.findElement(By.xpath("//div[@class='tableFixHead']")));
+		((JavascriptExecutor) chr).executeScript("arguments[0].scrollIntoView(true);", chr.findElement(By.xpath("//div[@class='tableFixHead']")));
 		
 		// 8. Lấy giá trị từng hàng trong bảng
-		//PrintValuesFromTable(chr.findElement(By.xpath("//div[@class='tableFixHead']")));
+		PrintValuesFromTable(chr.findElement(By.xpath("//div[@class='tableFixHead']")));
 		//System.out.println(GetValuesFromTable3(chr.findElement(By.xpath("//div[@class='tableFixHead']"))));		
 		
 		// 9. Tính total Amount trong bảng và sau đó
-		/*int total = TotalAmount(chr.findElement(By.xpath("//div[@class='tableFixHead']")));
+		int total = TotalAmount(chr.findElement(By.xpath("//div[@class='tableFixHead']")));
 		int getTotal = Integer.parseInt(chr.findElement(By.className("totalAmount")).getText().split(":")[1].trim());
-		if(total == getTotal) {
-			System.out.println("Total Amount is correct");
-		}*/
-		String total = Integer.toString(TotalAmount(chr.findElement(By.xpath("//div[@class='tableFixHead']"))));
-		System.out.println("Total Anount is 296: "+chr.findElement(By.className("totalAmount")).getText().contains(total));
+		Assert.assertEquals(total,getTotal);
 		
 		chr.close();
 	}

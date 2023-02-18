@@ -3,23 +3,20 @@
   <groupId>Lama</groupId>
   <artifactId>Selenium</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <dependencies>
-	  
+   <dependencies>
 	  <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 <dependency>
     <groupId>org.seleniumhq.selenium</groupId>
     <artifactId>selenium-java</artifactId>
     <version>4.8.0</version>
 </dependency>
-
-	  <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+<!-- https://mvnrepository.com/artifact/org.testng/testng -->
 <dependency>
     <groupId>org.testng</groupId>
     <artifactId>testng</artifactId>
     <version>7.7.0</version>
     <scope>test</scope>
 </dependency>
-
   </dependencies>
   <build>
     <sourceDirectory>src</sourceDirectory>
@@ -28,7 +25,7 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
         <configuration>
-          <release>19</release>
+          <release>18</release>
         </configuration>
       </plugin>
     </plugins>
