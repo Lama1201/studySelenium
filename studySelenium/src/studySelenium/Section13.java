@@ -41,8 +41,8 @@ public class Section13 {
 		//TakeScreenShot(chr);
 		CheckBrokenUrl(chr);
 		
-
 	}
+	
 	public static void Login(WebDriver chr) {
 		chr.findElement(By.id("email")).sendKeys("anh.luuhai@live.com");
 		chr.findElement(By.id("password")).sendKeys("Password1@");
@@ -81,5 +81,5 @@ public class Section13 {
 		}
 		a.assertAll();
 	}
-	
+
 }

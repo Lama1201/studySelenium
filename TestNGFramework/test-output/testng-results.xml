@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="6" total="19" passed="13" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-02-23T16:50:26 ICT" name="Suite" finished-at="2023-02-23T16:50:26 ICT" duration-ms="70">
+    <groups>
+      <group name="smoke">
+        <method signature="Module4.test1()[pri:0, instance:testSuite1.Module4@57c758ac]" name="test1" class="testSuite1.Module4"/>
+        <method signature="Module4.test2()[pri:0, instance:testSuite1.Module4@57c758ac]" name="test2" class="testSuite1.Module4"/>
+      </group> <!-- smoke -->
+      <group name="header">
+        <method signature="Module4.test6()[pri:0, instance:testSuite1.Module4@57c758ac]" name="test6" class="testSuite1.Module4"/>
+        <method signature="Module4.test7()[pri:0, instance:testSuite1.Module4@57c758ac]" name="test7" class="testSuite1.Module4"/>
+      </group> <!-- header -->
+      <group name="body">
+        <method signature="Module4.test3()[pri:0, instance:testSuite1.Module4@57c758ac]" name="test3" class="testSuite1.Module4"/>
+        <method signature="Module4.test4()[pri:0, instance:testSuite1.Module4@57c758ac]" name="test4" class="testSuite1.Module4"/>
+        <method signature="Module4.test5()[pri:0, instance:testSuite1.Module4@57c758ac]" name="test5" class="testSuite1.Module4"/>
+      </group> <!-- body -->
+    </groups>
+    <test started-at="2023-02-23T16:50:26 ICT" name="Test" finished-at="2023-02-23T16:50:26 ICT" duration-ms="70">
+      <class name="testSuite1.Module3">
+        <test-method is-config="true" signature="ItShouldRunFirst()[pri:0, instance:testSuite1.Module3@67a20f67]" started-at="2023-02-23T16:50:26 ICT" name="ItShouldRunFirst" finished-at="2023-02-23T16:50:26 ICT" duration-ms="6" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ItShouldRunFirst -->
+        <test-method is-config="true" signature="BeforeClass()[pri:0, instance:testSuite1.Module3@67a20f67]" started-at="2023-02-23T16:50:26 ICT" name="BeforeClass" finished-at="2023-02-23T16:50:26 ICT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- BeforeClass -->
+        <test-method signature="testcase2()[pri:0, instance:testSuite1.Module3@67a20f67]" started-at="2023-02-23T16:50:26 ICT" name="testcase2" finished-at="2023-02-23T16:50:26 ICT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testcase2 -->
+        <test-method signature="testcase3()[pri:0, instance:testSuite1.Module3@67a20f67]" started-at="2023-02-23T16:50:26 ICT" name="testcase3" finished-at="2023-02-23T16:50:26 ICT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testcase3 -->
+        <test-method signature="testcase1()[pri:0, instance:testSuite1.Module3@67a20f67]" started-at="2023-02-23T16:50:26 ICT" name="testcase1" finished-at="2023-02-23T16:50:26 ICT" depends-on-methods="testSuite1.Module3.testcase2, testSuite1.Module3.testcase3" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testcase1 -->
+        <test-method is-config="true" signature="AfterClass()[pri:0, instance:testSuite1.Module3@67a20f67]" started-at="2023-02-23T16:50:26 ICT" name="AfterClass" finished-at="2023-02-23T16:50:26 ICT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AfterClass -->
+        <test-method is-config="true" signature="ItShouldRunLast()[pri:0, instance:testSuite1.Module3@67a20f67]" started-at="2023-02-23T16:50:26 ICT" name="ItShouldRunLast" finished-at="2023-02-23T16:50:26 ICT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ItShouldRunLast -->
+      </class> <!-- testSuite1.Module3 -->
+      <class name="testSuite1.Module4">
+        <test-method signature="test1()[pri:0, instance:testSuite1.Module4@57c758ac]" started-at="2023-02-23T16:50:26 ICT" name="test1" finished-at="2023-02-23T16:50:26 ICT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test1 -->
+        <test-method signature="test2()[pri:0, instance:testSuite1.Module4@57c758ac]" started-at="2023-02-23T16:50:26 ICT" name="test2" finished-at="2023-02-23T16:50:26 ICT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test2 -->
+        <test-method signature="test3()[pri:0, instance:testSuite1.Module4@57c758ac]" started-at="2023-02-23T16:50:26 ICT" name="test3" finished-at="2023-02-23T16:50:26 ICT" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test3 -->
+        <test-method signature="test4()[pri:0, instance:testSuite1.Module4@57c758ac]" started-at="2023-02-23T16:50:26 ICT" name="test4" finished-at="2023-02-23T16:50:26 ICT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test4 -->
+        <test-method signature="test5()[pri:0, instance:testSuite1.Module4@57c758ac]" started-at="2023-02-23T16:50:26 ICT" name="test5" finished-at="2023-02-23T16:50:26 ICT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test5 -->
+        <test-method signature="test6()[pri:0, instance:testSuite1.Module4@57c758ac]" started-at="2023-02-23T16:50:26 ICT" name="test6" finished-at="2023-02-23T16:50:26 ICT" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test6 -->
+        <test-method signature="test7()[pri:0, instance:testSuite1.Module4@57c758ac]" started-at="2023-02-23T16:50:26 ICT" name="test7" finished-at="2023-02-23T16:50:26 ICT" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test7 -->
+      </class> <!-- testSuite1.Module4 -->
+      <class name="testSuite1.Module1">
+        <test-method is-config="true" signature="doSomeThingFirst()[pri:0, instance:testSuite1.Module1@3e2e18f2]" started-at="2023-02-23T16:50:26 ICT" name="doSomeThingFirst" finished-at="2023-02-23T16:50:26 ICT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- doSomeThingFirst -->
+        <test-method signature="testcase3()[pri:0, instance:testSuite1.Module1@3e2e18f2]" started-at="2023-02-23T16:50:26 ICT" name="testcase3" finished-at="2023-02-23T16:50:26 ICT" duration-ms="6" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testcase3 -->
+        <test-method signature="testcase1()[pri:0, instance:testSuite1.Module1@3e2e18f2]" started-at="2023-02-23T16:50:26 ICT" name="testcase1" finished-at="2023-02-23T16:50:26 ICT" depends-on-methods="testSuite1.Module1.testcase3" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testcase1 -->
+        <test-method is-config="true" signature="ExecuteLatest()[pri:0, instance:testSuite1.Module1@3e2e18f2]" started-at="2023-02-23T16:50:26 ICT" name="ExecuteLatest" finished-at="2023-02-23T16:50:26 ICT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ExecuteLatest -->
+      </class> <!-- testSuite1.Module1 -->
+      <class name="testSuite1.Module2">
+        <test-method is-config="true" signature="runBeforeEveryTest()[pri:0, instance:testSuite1.Module2@17046283]" started-at="2023-02-23T16:50:26 ICT" name="runBeforeEveryTest" finished-at="2023-02-23T16:50:26 ICT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runBeforeEveryTest -->
+        <test-method signature="testcase1()[pri:0, instance:testSuite1.Module2@17046283]" started-at="2023-02-23T16:50:26 ICT" name="testcase1" finished-at="2023-02-23T16:50:26 ICT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testcase1 -->
+        <test-method is-config="true" signature="runAfterEveryTest()[pri:0, instance:testSuite1.Module2@17046283]" started-at="2023-02-23T16:50:26 ICT" name="runAfterEveryTest" finished-at="2023-02-23T16:50:26 ICT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runAfterEveryTest -->
+      </class> <!-- testSuite1.Module2 -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>

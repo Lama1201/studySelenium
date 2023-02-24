@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-02-21T14:49:09 ICT" name="Default suite" finished-at="2023-02-21T14:49:12 ICT" duration-ms="3615">
+    <groups>
+    </groups>
+    <test started-at="2023-02-21T14:49:09 ICT" name="Default test" finished-at="2023-02-21T14:49:12 ICT" duration-ms="3615">
+      <class name="studySelenium.Section14">
+        <test-method signature="Test6()[pri:0, instance:studySelenium.Section14@15c43bd9]" started-at="2023-02-21T14:49:09 ICT" name="Test6" finished-at="2023-02-21T14:49:12 ICT" duration-ms="3586" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Test6 -->
+      </class> <!-- studySelenium.Section14 -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
