@@ -1,0 +1,12 @@
+[
+    {
+        "email": "faker@email.com",
+        "pw": "Password1@",
+        "productName": "adidas original"
+    },
+    {
+        "email": "faker@email.com",
+        "pw": "Password1@",
+        "productName": "zara coat 3"
+    }
+]

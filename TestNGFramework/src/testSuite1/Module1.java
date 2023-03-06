@@ -1,6 +1,11 @@
 package testSuite1;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class Module1 {
@@ -8,6 +13,18 @@ public class Module1 {
 	public void ExecuteLatest() {
 		System.out.println("====================================");
 		System.out.println("It should run later");
+	}
+	
+	@Parameters({"url","email","pw"})
+	@Test
+	public void openWebsite(String url, String email, String pw) throws InterruptedException {
+		WebDriver chr = new ChromeDriver();	
+		chr.get(url);
+		chr.findElement(By.name("email")).sendKeys(email);
+		chr.findElement(By.name("password")).sendKeys(pw);
+		chr.findElement(By.tagName("button")).click();
+		Thread.sleep(2000);
+		chr.close();
 	}
 	
 	@Test(dependsOnMethods= {"testcase3"}) // dependsOnMethods sẽ chạy method testcase3 trước khhi chạy testcase1
@@ -23,6 +40,7 @@ public class Module1 {
 	@Test
 	public void testcase3() {
 		System.out.println("Test case 3 in module 1");	
+		Assert.assertTrue(false);
 	}
 	
 	@BeforeTest   // Method có tag này sẽ được chạy sau khi chạy các test case
