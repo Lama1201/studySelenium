@@ -4,14 +4,23 @@ package LamaAutomation.TestComponents;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 import org.apache.commons.io.FileUtils;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.ss.util.NumberToTextConverter;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -69,6 +78,62 @@ public class BaseTest {
 		ObjectMapper mapper = new ObjectMapper();
 		List<HashMap<String,String>> data = mapper.readValue(jsonContent, new TypeReference<List<HashMap<String,String>>>(){});
 		return data;
+	}
+	
+	public Object[][] readExcel(String filePath, String sheetName, String testCaseName) throws IOException {
+				
+		try (InputStream inp = new FileInputStream(filePath)) {
+			Workbook workbook = WorkbookFactory.create(inp);
+			Sheet sheet = workbook.getSheet(sheetName);
+			if (sheet == null) {
+				throw new IllegalArgumentException("Sheet not found: " + sheetName);
+			}
+			int r =0;
+			List<Object[]> listRows = new ArrayList<Object[]>();
+			for (int i = 1; i <= sheet.getLastRowNum(); i++) {
+				Object[] row =new Object[sheet.getRow(i).getLastCellNum()-1];
+				if (sheet.getRow(i).getCell(0).toString().equalsIgnoreCase(testCaseName)) {
+					for (int j = 1; j < sheet.getRow(i).getLastCellNum(); j++) {
+						Cell cell = sheet.getRow(i).getCell(j);
+//						switch (cell.getCellType()) {
+//	                    case STRING:
+//	                        row[-1] = cell.getStringCellValue();
+//	                        break;
+//	                    case NUMERIC:
+//	                        row[-1] = cell.getNumericCellValue();
+//	                        break;
+//	                    case BOOLEAN:
+//	                        row[-1] = cell.getBooleanCellValue();
+//	                        break;
+//	                    default:
+//	                        row[-1] = " ";
+//						}
+						if(cell.getCellType()== CellType.STRING) {
+							row[j-1] = cell.getStringCellValue();
+						}
+						else {						
+							row[j-1] = NumberToTextConverter.toText(cell.getNumericCellValue());
+						}						
+					}
+					listRows.add(row);
+					r++;
+				}
+				
+			}
+			Object[][] data = new Object[r][];
+			for(int n =0;n<r;n++) {
+				data[n]= listRows.get(n);
+			}			
+	        workbook.close();
+//	        for (int i = 0; i < data.length; i++) {
+//	            for (int j = 0; j < data[0].length; j++) {
+//	                System.out.print(data[i][j] + " ");
+//	            }
+//	            System.out.println();
+//	        }
+	    	return data;
+			
+		}
 	}
 	
 	@BeforeMethod(alwaysRun = true)

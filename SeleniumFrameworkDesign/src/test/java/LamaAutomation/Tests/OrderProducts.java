@@ -1,6 +1,7 @@
 package LamaAutomation.Tests;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -18,44 +19,58 @@ import LamaAutomation.pageObjects.ProductCatalogue;
 
 public class OrderProducts extends BaseTest{
 		
-	@Test(dataProvider="getData", groups="Purchase")
-	public void buyProducts(HashMap<String,String> input) throws IOException, InterruptedException {
+//	@Test(dataProvider="getDataFromJson", groups="Purchase")
+//	public void buyProducts(HashMap<String,String> input) throws IOException, InterruptedException {
+//		
+//		ProductCatalogue productCatalogue = landingPage.Login(input.get("email"), input.get("pw"));		
+//		productCatalogue.addProductToCart(input.get("productName"));			
+//		MyCart myCart = productCatalogue.openCart();
+//		Assert.assertTrue(myCart.checkAddedProduct(input.get("productName")));		
+//		PaymentInfo pay = myCart.checkout();
+//		pay.selectCountry2("vi", "Vietnam");			
+//		SubmitSuccess complete = pay.placeOrder();
+//		complete.checkOrderSuccess("Thankyou for the order.");
+//	}
+	
+	@Test(dataProvider="getDataFromExcel", groups="Purchase")
+	public void buyProducts(String email,String pw, String productName) throws IOException, InterruptedException {
 		
-		ProductCatalogue productCatalogue = landingPage.Login(input.get("email"), input.get("pw"));		
-		productCatalogue.addProductToCart(input.get("productName"));			
+		ProductCatalogue productCatalogue = landingPage.Login(email, pw);		
+		productCatalogue.addProductToCart(productName);			
 		MyCart myCart = productCatalogue.openCart();
-		Assert.assertTrue(myCart.checkAddedProduct(input.get("productName")));		
+		Assert.assertTrue(myCart.checkAddedProduct(productName));		
 		PaymentInfo pay = myCart.checkout();
 		pay.selectCountry2("vi", "Vietnam");			
 		SubmitSuccess complete = pay.placeOrder();
-		complete.checkOrderSuccess();
+		complete.checkOrderSuccess("Thankyou for the order.");
 	}
 	
-	@Test(dependsOnMethods= {"buyProducts"},dataProvider="getData",groups="Purchase")
-	public void checkOrder(HashMap<String,String> input) throws InterruptedException {
-		
-		ProductCatalogue productCatalogue = landingPage.Login(input.get("email"), input.get("pw"));		
-		OrderPage orderPage = productCatalogue.goToOrderPage();
-		Thread.sleep(5000);
-		Assert.assertTrue(orderPage.verifyOrderedProduct(input.get("productName")));
-		
-	}
-	
-	@DataProvider
-	public Object[][] getData() throws IOException {
 
-		
-		List<HashMap<String,String>> data = getJsonDataToMap(System.getProperty("user.dir")+"//src//test//java//LamaAutomation//data//PurchaseOrder.json");
-		return new Object[][] {{data.get(0)},{data.get(1)}};
-	}
+//	@Test(dependsOnMethods= {"buyProducts"},dataProvider="getData",groups="Purchase")
+//	public void checkOrder(HashMap<String,String> input) throws InterruptedException {
+//		
+//		ProductCatalogue productCatalogue = landingPage.Login(input.get("email"), input.get("pw"));		
+//		OrderPage orderPage = productCatalogue.goToOrderPage();
+//		Thread.sleep(5000);
+//		Assert.assertTrue(orderPage.verifyOrderedProduct(input.get("productName")));
+//		
+//	}
 	
+//	@DataProvider
+//	public Object[][] getDataFromJson() throws IOException {
+//
+//		
+//		List<HashMap<String,String>> data = getJsonDataToMap(System.getProperty("user.dir")+"//src//test//java//LamaAutomation//data//PurchaseOrder.json");
+//		return new Object[][] {{data.get(0)},{data.get(1)}};
+//	}
+//	
 //	@DataProvider
 //	public Object[][] getData() {
 //		return new Object[][] {{"faker@email.com","Password1@","adidas original"},{"faker@email.com","Password1@","zara coat 3"}};
 //	}
-	
+//	
 //	@DataProvider
-//	public Object[][] getData() throws IOException {
+//	public Object[][] getDataHashMap() throws IOException {
 //		HashMap<String,String> map = new HashMap<String,String>();
 //		map.put("email", "faker@email.com");
 //		map.put("pw", "Password1@");
@@ -68,4 +83,11 @@ public class OrderProducts extends BaseTest{
 //	
 //		return new Object[][] {{map},{map1}};
 //	}
+	
+	@DataProvider
+	public Object[][] getDataFromExcel() throws IOException {
+		Object[][] data = readExcel("C:\\Users\\Lama\\OneDrive\\Desktop\\DemoData.xlsx","testdata", "buyProducts");	  
+		return data;
+	}
+		
 }

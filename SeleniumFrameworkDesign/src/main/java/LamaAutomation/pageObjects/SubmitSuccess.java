@@ -25,9 +25,9 @@ public class SubmitSuccess extends AbstractComponent {
 	@FindBy(tagName="h1") WebElement txtGreeting;
 	By txtGreetingBy = By.tagName("h1");
 	
-	public void checkOrderSuccess() {
+	public void checkOrderSuccess(String successMessage) {
 		waitForElementToAppear(txtGreetingBy);
-		Assert.assertTrue(txtGreeting.getText().equalsIgnoreCase("Thankyou for the order."));
+		Assert.assertTrue(txtGreeting.getText().equalsIgnoreCase(successMessage));
 	}
 	
 }
