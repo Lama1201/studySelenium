@@ -17,6 +17,7 @@ import java.util.Properties;
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
@@ -81,7 +82,7 @@ public class BaseTest {
 	}
 	
 	public Object[][] readExcel(String filePath, String sheetName, String testCaseName) throws IOException {
-				
+		DataFormatter formatter = new DataFormatter();		
 		try (InputStream inp = new FileInputStream(filePath)) {
 			Workbook workbook = WorkbookFactory.create(inp);
 			Sheet sheet = workbook.getSheet(sheetName);
@@ -94,45 +95,18 @@ public class BaseTest {
 				Object[] row =new Object[sheet.getRow(i).getLastCellNum()-1];
 				if (sheet.getRow(i).getCell(0).toString().equalsIgnoreCase(testCaseName)) {
 					for (int j = 1; j < sheet.getRow(i).getLastCellNum(); j++) {
-						Cell cell = sheet.getRow(i).getCell(j);
-//						switch (cell.getCellType()) {
-//	                    case STRING:
-//	                        row[-1] = cell.getStringCellValue();
-//	                        break;
-//	                    case NUMERIC:
-//	                        row[-1] = cell.getNumericCellValue();
-//	                        break;
-//	                    case BOOLEAN:
-//	                        row[-1] = cell.getBooleanCellValue();
-//	                        break;
-//	                    default:
-//	                        row[-1] = " ";
-//						}
-						if(cell.getCellType()== CellType.STRING) {
-							row[j-1] = cell.getStringCellValue();
-						}
-						else {						
-							row[j-1] = NumberToTextConverter.toText(cell.getNumericCellValue());
-						}						
+						row[j-1] = formatter.formatCellValue(sheet.getRow(i).getCell(j));		
 					}
 					listRows.add(row);
 					r++;
-				}
-				
+				}				
 			}
 			Object[][] data = new Object[r][];
 			for(int n =0;n<r;n++) {
 				data[n]= listRows.get(n);
 			}			
 	        workbook.close();
-//	        for (int i = 0; i < data.length; i++) {
-//	            for (int j = 0; j < data[0].length; j++) {
-//	                System.out.print(data[i][j] + " ");
-//	            }
-//	            System.out.println();
-//	        }
-	    	return data;
-			
+	    	return data;			
 		}
 	}
 	
@@ -143,7 +117,6 @@ public class BaseTest {
 		landingPage.goTo();
 		return landingPage;
 	}
-			
 
 	public String takeScreenshot(String methodName, WebDriver driver) throws InterruptedException, IOException {
         Thread.sleep(1000);      
