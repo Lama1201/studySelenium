@@ -49,7 +49,7 @@ public class OrderProducts extends BaseTest{
 	@Test(dependsOnMethods= {"buyProducts"},dataProvider="getDataHashMap",groups="Purchase")
 	public void checkOrder(HashMap<String,String> input) throws InterruptedException {
 		
-		ProductCatalogue productCatalogue = landingPage.Login(input.get("email"), input.get("pw"));		
+		ProductCatalogue productCatalogue = landingPage.Login(input.get("email"), input.get("pw"));	
 		OrderPage orderPage = productCatalogue.goToOrderPage();
 		Thread.sleep(5000);
 		Assert.assertTrue(orderPage.verifyOrderedProduct(input.get("productName")));

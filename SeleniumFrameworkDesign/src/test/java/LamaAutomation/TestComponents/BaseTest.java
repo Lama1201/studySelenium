@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -30,6 +32,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -42,6 +46,15 @@ public class BaseTest {
 	public WebDriver driver;
 	public LandingPage landingPage;
 	
+	public WebDriver SeleniumGrid() throws MalformedURLException {
+		DesiredCapabilities caps = new DesiredCapabilities();
+		caps.setBrowserName("chrome");
+//		caps.setPlatform(null);
+		driver = new RemoteWebDriver(new URL("http://192.168.50.189:4444"),caps);
+		driver.manage().window().maximize();
+		return driver;
+	}
+	
 	public WebDriver initializeDriver() throws IOException {
 		//properties class
 		Properties prop = new Properties();
@@ -53,7 +66,8 @@ public class BaseTest {
 		String browserName = System.getProperty("browser", null) != null ? System.getProperty("browser") : prop.getProperty("browser");
 		
 		if(browserName.contains("chrome")) {
-			ChromeOptions options = new ChromeOptions();			
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--remote-allow-origins=*");
 			WebDriverManager.chromedriver().setup();	
 			// allow to set test run in headless mode
 						if(browserName.contains("headless")) {
@@ -113,6 +127,7 @@ public class BaseTest {
 	@BeforeMethod(alwaysRun = true)
 	public LandingPage launchBrowser() throws IOException {
 		driver = initializeDriver();
+//		driver = SeleniumGrid();
 		landingPage = new LandingPage(driver);
 		landingPage.goTo();
 		return landingPage;

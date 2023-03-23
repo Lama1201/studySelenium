@@ -28,7 +28,7 @@ public class AbstractComponent {
 	@FindBy(xpath="//button[contains(text(),'ORDERS')]") 
 	WebElement btnOrder;
 	
-	public MyCart goToCart() {
+	public MyCart goToCart() throws InterruptedException {
 		btnCart.click();
 		MyCart myCart = new MyCart(driver);
 		return myCart;
